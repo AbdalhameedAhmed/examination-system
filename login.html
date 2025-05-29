@@ -7,73 +7,93 @@
     <title>LogIn</title>
   </head>
   <body class="bg-background w-screen h-screen">
-    <div class="container flex h-full items-center justify-center m-auto rounded-xl">
-      <div class="w-[70%] h-[70%]  flex border-1 border-primary rounded-xl overflow-hidden shadow-lg">
-        <div class="w-2/5 bg-primary items-center justify-center p-12 rounded-tr-xl rounded-br-xl hidden md:flex"  >
+    <div
+      class="container flex h-full items-center justify-center m-auto rounded-xl"
+    >
+      <div
+        class="w-[70%] h-[70%] flex border-1 border-primary rounded-xl overflow-hidden shadow-lg"
+      >
+        <div
+          class="w-2/5 bg-primary items-center justify-center p-12 rounded-tr-xl rounded-br-xl hidden md:flex"
+        >
           <img src="./assets/login.svg" alt="login" />
         </div>
-        <div class="w-full md:w-3/5 bg-background flex flex-col p-12 items-center justify-center gap-6 rounded-xl  ">
-            <h1 class="text-3xl md:text-4xl font-bold text-secondary">LOG IN</h1>
-            <div class="relative w-full min-w-[200px]">
-                <input
-                type="text"
-                id="Email"
-                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-background md:bg-transparent rounded-lg border-1 border-primary appearance-none focus:outline-none focus:ring-0 focus:border-secondary peer"
-                placeholder=" "
-                name="Email"
-                />
-                <label
-                for="Email"
-                class="absolute text-sm text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 bg-background peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-                >Email</label
-                >
-            </div>
-          <div class="relative w-full min-w-[200px]">
-                <input
-                type="password"
-                id="password"
-                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-background md:bg-transparent rounded-lg border-1 border-primary appearance-none focus:outline-none focus:ring-0 focus:border-secondary peer"
-                placeholder=" "
-                name="password"
-                />
-                <label
-                for="password"
-                class="absolute text-sm text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 bg-background peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-                >Password</label
-                >
-                
-            <button 
-             onclick="togglePassword(this)"
-             class="absolute  top-[50%] -translate-y-1/2 right-4 w-6 z-10 opacity-50 hover:opacity-100 transition duration-300  cursor-pointer ">
-              <img
-              
-              src="/assets/eye-slash-solid.svg" 
-              alt=""
-              >
-            </button>
+        <div class="w-full md:w-3/5 bg-background p-12 rounded-xl">
+          <form
+            id="loginForm"
+            class="w-full flex flex-col justify-center items-center gap-6 h-full"
+          >
+            <h1 class="text-3xl md:text-4xl font-bold text-secondary">
+              LOG IN
+            </h1>
 
-            <button 
-              onclick="togglePassword(this)" 
-              class="absolute  top-[50%] hidden -translate-y-1/2 right-4 w-6 z-10 opacity-50 hover:opacity-100 transition duration-300  cursor-pointer ">
-              <img
-              src="/assets/eye-solid.svg" 
-              alt=""
-              >
-            </button>
+            <div class="w-full">
+              <div class="relative w-full min-w-[200px]">
+                <input
+                  type="text"
+                  id="email"
+                  class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-background md:bg-transparent rounded-lg border-1 border-primary appearance-none focus:outline-none focus:ring-0 focus:border-secondary peer"
+                  placeholder=" "
+                  name="email"
+                  required
+                />
+                <label
+                  for="email"
+                  class="absolute text-sm text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 bg-background peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                  >Email</label
+                >
+              </div>
+              <div class="text-sm text-red-500"></div>
             </div>
+
+            <div class="w-full">
+              <div class="relative w-full min-w-[200px]">
+                <input
+                  type="password"
+                  id="password"
+                  class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-background md:bg-transparent rounded-lg border-1 border-primary appearance-none focus:outline-none focus:ring-0 focus:border-secondary peer"
+                  placeholder=" "
+                  name="password"
+                  required
+                />
+                <label
+                  for="password"
+                  class="absolute text-sm text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 bg-background peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                  >Password</label
+                >
+
+                <button
+                  data-type="togglePassword"
+                  class="absolute top-[50%] -translate-y-1/2 right-4 w-6 z-10 opacity-50 hover:opacity-100 transition duration-300 cursor-pointer"
+                >
+                  <img src="/assets/eye-slash-solid.svg" alt="" />
+                </button>
+
+                <button
+                  data-type="togglePassword"
+                  class="absolute top-[50%] hidden -translate-y-1/2 right-4 w-6 z-10 opacity-50 hover:opacity-100 transition duration-300 cursor-pointer"
+                >
+                  <img src="/assets/eye-solid.svg" alt="" />
+                </button>
+              </div>
+              <div class="text-sm text-red-500"></div>
+            </div>
+
             <button
-                class="bg-background text-secondary border-1 font-bold py-2 px-12 rounded-lg transition-all hover:bg-secondary hover:text-background transition duration-300">
+              class="bg-background text-secondary border-1 font-bold py-2 px-12 rounded-lg hover:bg-secondary hover:text-background transition duration-300"
+            >
               Log In
             </button>
             <p>
-            Don't have an account?
-            <a href="register.html" class="text-primary hover:text-secondary"
-              >Register</a
-            >
-          </p>
+              Don't have an account?
+              <a href="register.html" class="text-primary hover:text-secondary"
+                >Register</a
+              >
+            </p>
+          </form>
         </div>
       </div>
     </div>
-    <script src="js/auth.js"></script>
+    <script src="js/login.js" type="module"></script>
   </body>
 </html>

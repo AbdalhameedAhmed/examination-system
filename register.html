@@ -11,7 +11,7 @@
       class="container flex items-center justify-center w-full h-full m-auto"
     >
       <div
-        class="border border-primary rounded-xl flex flex-col md:flex-row md:min-w-[700px] max-w-[1200px] w-[90%] md:w-[70%]  md:min-h-[500px] overflow-hidden shadow-lg"
+        class="border border-primary rounded-xl flex flex-col md:flex-row md:min-w-[700px] max-w-[1200px] w-[90%] md:w-[70%] md:min-h-[500px] overflow-hidden shadow-lg"
       >
         <div
           class="hidden md:flex w-2/5 bg-primary items-center justify-center p-12 rounded-tl-xl rounded-bl-xl"
@@ -23,133 +23,150 @@
           />
         </div>
 
-        <div
-          class="w-full md:w-3/5 bg-transparent p-12 flex flex-col justify-center items-center gap-6"
-        >
-          <h1
-            class="text-3xl font-bold md:text-4xl text-secondary ">
-            Register
-          </h1>
-          <div class="relative w-full min-w-[200px]">
-            <input
-              type="text"
-              id="fName"
-              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-background md:bg-transparent rounded-lg border-1 border-primary appearance-none focus:outline-none focus:ring-0 focus:border-secondary peer"
-              placeholder=" "
-              name="fName"
-            />
-            <label
-              for="fName"
-              class="absolute text-sm text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 bg-background peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-              >First Name</label
-            >
-          </div>
-          <div class="relative w-full min-w-[200px]">
-            <input
-              type="text"
-              id="lName"
-              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-background md:bg-transparent rounded-lg border-1 border-primary appearance-none focus:outline-none focus:ring-0 focus:border-secondary peer"
-              placeholder=" "
-              name="lName"
-            />
-            <label
-              for="lName"
-              class="absolute text-sm text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 bg-background peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-              >Last Name</label
-            >
-          </div>
-          <div class="relative w-full min-w-[200px]">
-            <input
-              type="text"
-              id="email"
-              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-background md:bg-transparent rounded-lg border-1 border-primary appearance-none focus:outline-none focus:ring-0 focus:border-secondary peer"
-              placeholder=" "
-              name="email"
-            />
-            <label
-              for="email"
-              class="absolute text-sm text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 bg-background peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-              >Email</label
-            >
-          </div>
-          <div class="relative w-full min-w-[200px]">
-            <input
-              type="password"
-              id="password"
-              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-background md:bg-transparent rounded-lg border-1 border-primary appearance-none focus:outline-none focus:ring-0 focus:border-secondary peer"
-              placeholder=" "
-              name="password"
-            />
-            <label
-              for="password"
-              class="absolute text-sm text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 bg-background peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-              >Password</label
-            >
-            
-            <button 
-             onclick="togglePassword(this)"
-             class="absolute  top-[50%] -translate-y-1/2 right-4 w-6 z-10 opacity-50 hover:opacity-100 transition duration-300  cursor-pointer ">
-              <img
-              
-              src="/assets/eye-slash-solid.svg" 
-              alt=""
-              >
-            </button>
-
-            <button 
-              onclick="togglePassword(this)" 
-              class="absolute  top-[50%] hidden -translate-y-1/2 right-4 w-6 z-10 opacity-50 hover:opacity-100 transition duration-300  cursor-pointer ">
-              <img
-              src="/assets/eye-solid.svg" 
-              alt=""
-              >
-            </button>
-          </div>
-          <div class="relative w-full min-w-[200px]">
-            <input
-              type="password"
-              id="confirmPassword"
-              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-background md:bg-transparent rounded-lg border-1 border-primary appearance-none focus:outline-none focus:ring-0 focus:border-secondary peer"
-              placeholder=" "
-            />
-            <label
-              for="confirmPassword"
-              class="absolute text-sm text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 bg-background peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-              >Confirm password</label
-            >
-            <button 
-             onclick="togglePassword(this)"
-             class="absolute  top-[50%] -translate-y-1/2 right-4 w-6 z-10 opacity-50 hover:opacity-100 transition duration-300  cursor-pointer ">
-              <img
-              
-              src="/assets/eye-slash-solid.svg" 
-              alt=""
-              >
-            </button>
-
-            <button 
-              onclick="togglePassword(this)" 
-              class="absolute  top-[50%] hidden -translate-y-1/2 right-4 w-6 z-10 opacity-50 hover:opacity-100 transition duration-300  cursor-pointer ">
-              <img
-              src="/assets/eye-solid.svg" 
-              alt=""
-              >
-            </button>
-          </div>
-          <button
-            class="border border-primary hover:border-secondary focus:border-secondary bg-background md:background-transparent hover:text-white focus:text-white py-2 px-12 hover:bg-secondary focus:bg-secondary rounded-lg transition-all duration-300 hover:font-bold"
+        <div class="w-full md:w-3/5 bg-transparent p-12">
+          <form
+            class="w-full flex flex-col justify-center items-center gap-6"
+            id="registerForm"
           >
-            Register
-          </button>
-          <p>
-            You already have an account?
-            <a href="login.html" class="text-primary hover:text-secondary"
-              >Login</a
+            <h1 class="text-3xl font-bold md:text-4xl text-secondary">
+              Register
+            </h1>
+            <div class="w-full">
+              <div class="relative w-full min-w-[200px]">
+                <input
+                  type="text"
+                  id="fName"
+                  class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-background md:bg-transparent rounded-lg border-1 border-primary appearance-none focus:outline-none focus:ring-0 focus:border-secondary peer"
+                  placeholder=" "
+                  name="fName"
+                  required
+                />
+                <label
+                  for="fName"
+                  class="absolute text-sm text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 bg-background peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                  >First Name</label
+                >
+              </div>
+              <div class="text-sm text-red-500"></div>
+            </div>
+            <div class="w-full">
+              <div class="relative w-full min-w-[200px]">
+                <input
+                  type="text"
+                  id="lName"
+                  class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-background md:bg-transparent rounded-lg border-1 border-primary appearance-none focus:outline-none focus:ring-0 focus:border-secondary peer"
+                  placeholder=" "
+                  name="lName"
+                  required
+                />
+                <label
+                  for="lName"
+                  class="absolute text-sm text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 bg-background peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                  >Last Name</label
+                >
+              </div>
+              <div class="text-sm text-red-500"></div>
+            </div>
+
+            <div class="w-full">
+              <div class="relative w-full min-w-[200px]">
+                <input
+                  type="text"
+                  id="email"
+                  class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-background md:bg-transparent rounded-lg border-1 border-primary appearance-none focus:outline-none focus:ring-0 focus:border-secondary peer"
+                  placeholder=" "
+                  name="email"
+                  required
+                />
+                <label
+                  for="email"
+                  class="absolute text-sm text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 bg-background peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                  >Email</label
+                >
+              </div>
+              <div class="text-sm text-red-500"></div>
+            </div>
+
+            <div class="w-full">
+              <div class="relative w-full min-w-[200px]">
+                <input
+                  type="password"
+                  id="password"
+                  class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-background md:bg-transparent rounded-lg border-1 border-primary appearance-none focus:outline-none focus:ring-0 focus:border-secondary peer"
+                  placeholder=" "
+                  name="password"
+                  required
+                />
+                <label
+                  for="password"
+                  class="absolute text-sm text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 bg-background peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                  >Password</label
+                >
+
+                <button
+                  data-type="togglePassword"
+                  class="absolute top-[50%] -translate-y-1/2 right-4 w-6 z-10 opacity-50 hover:opacity-100 transition duration-300 cursor-pointer"
+                >
+                  <img src="/assets/eye-slash-solid.svg" alt="" />
+                </button>
+
+                <button
+                  data-type="togglePassword"
+                  class="absolute top-[50%] hidden -translate-y-1/2 right-4 w-6 z-10 opacity-50 hover:opacity-100 transition duration-300 cursor-pointer"
+                >
+                  <img src="/assets/eye-solid.svg" alt="" />
+                </button>
+              </div>
+              <div class="text-sm text-red-500"></div>
+            </div>
+
+            <div class="w-full">
+              <div class="relative w-full min-w-[200px]">
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-background md:bg-transparent rounded-lg border-1 border-primary appearance-none focus:outline-none focus:ring-0 focus:border-secondary peer"
+                  placeholder=" "
+                  required
+                  name="confirmPassword"
+                />
+                <label
+                  for="confirmPassword"
+                  class="absolute text-sm text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 bg-background peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                  >Confirm password</label
+                >
+                <button
+                  data-type="togglePassword"
+                  class="absolute top-[50%] -translate-y-1/2 right-4 w-6 z-10 opacity-50 hover:opacity-100 transition duration-300 cursor-pointer"
+                >
+                  <img src="/assets/eye-slash-solid.svg" alt="" />
+                </button>
+
+                <button
+                  data-type="togglePassword"
+                  class="absolute top-[50%] hidden -translate-y-1/2 right-4 w-6 z-10 opacity-50 hover:opacity-100 transition duration-300 cursor-pointer"
+                >
+                  <img src="/assets/eye-solid.svg" alt="" />
+                </button>
+              </div>
+              <div class="text-sm text-red-500"></div>
+            </div>
+
+            <button
+              class="border border-primary hover:border-secondary focus:border-secondary bg-background md:background-transparent hover:text-white focus:text-white py-2 px-12 hover:bg-secondary focus:bg-secondary rounded-lg transition-all duration-300 hover:font-bold"
             >
-          </p>
+              Register
+            </button>
+            <p>
+              You already have an account?
+              <a href="login.html" class="text-primary hover:text-secondary"
+                >Login</a
+              >
+            </p>
+          </form>
         </div>
       </div>
     </div>
-    <script src="js/auth.js"></script>
+    <script src="js/register.js" type="module"></script>
   </body>
 </html>
