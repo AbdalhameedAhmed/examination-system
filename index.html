@@ -25,11 +25,17 @@
           <div
             class="w-full h-full flex flex-col gap-6 px-2 py-6 md:p-12 justify-start md:justify-between"
           >
-            <p class="text-xl text-secondary md:text-3xl mb-4">
+            <p
+              id="pageQuestionHeader"
+              class="text-xl text-secondary md:text-3xl mb-4"
+            >
               1- My name is _____ and i am 23 years old , how are you ?
             </p>
-            <div class="flex flex-col gap-4 justify-center">
-              <div class="w-full relative">
+            <div
+              id="pageQuestionOptions"
+              class="flex flex-col gap-4 justify-center"
+            >
+              <!-- <div class="w-full relative">
                 <input
                   id="male"
                   class="peer hidden"
@@ -144,16 +150,18 @@
                   style="color: transparent"
                   src="/assets/check-solid.svg"
                 />
-              </div>
+              </div> -->
             </div>
             <div class="w-full flex items-center justify-center gap-2">
               <button
-                class="flex items-center gap-2 bg-primary px-4 py-2 rounded text-white hover:bg-secondary transition duration-300"
+                id="next"
+                class="flex items-center gap-2 bg-primary px-4 py-2 rounded text-white hover:bg-secondary transition duration-300 disabled:opacity-60 disabled:hover:bg-primary"
               >
                 next
               </button>
               <button
-                class="flex items-center gap-2 bg-primary px-4 py-2 rounded text-white hover:bg-secondary transition duration-300"
+                id="prev"
+                class="flex items-center gap-2 bg-primary px-4 py-2 rounded text-white hover:bg-secondary transition duration-300 disabled:opacity-60 disabled:hover:bg-primary"
               >
                 previos
               </button>
@@ -170,15 +178,10 @@
             </button>
           </div>
 
-          <div id="questionsSection"
+          <div
+            id="questionsSection"
             class="bg-exam border-t w-full p-2 border-primary shadow-xl flex overflow-x-auto gap-2 text-secondary hideScroll shrink-0"
-          >
-            <!-- <button
-              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
-            >
-              1
-            </button>  -->
-           </div>
+          ></div>
         </div>
 
         <div
