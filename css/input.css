@@ -4,7 +4,7 @@
   --color-primary: #578fca;
   --color-secondary: #1f517f;
   --color-background: #e8f7f3;
-  --color-exam: #EEF4F2;
+  --color-exam: #eef4f2;
 }
 
 .hideScroll::-webkit-scrollbar {
@@ -12,8 +12,10 @@
 }
 
 .hideScroll {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
 
-} 
-
+input::-ms-reveal {
+  display: none;
+}

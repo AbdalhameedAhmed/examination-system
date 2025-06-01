@@ -8,7 +8,7 @@
   </head>
   <body class="bg-background w-screen h-screen">
     <div
-      class="container flex flex-col gap-6 w-full max-w-[1200px] h-full m-auto p-6"
+      class="container flex flex-col justify-start md:justify-center gap-6 w-full max-w-[1200px] h-full m-auto p-4 md:p-6"
     >
       <div class="h-2 relative bg-primary rounded-xl">
         <div class="w-[80%] h-2 absolute bg-secondary rounded-xl">
@@ -17,248 +17,313 @@
       </div>
 
       <div
-        class="bg-exam h-full flex items-start gap-24 border border-primary rounded-2xl overflow-hidden"
+        class="bg-exam flex items-start border h-full md:h-auto md:min-h-[600px] border-primary rounded-2xl overflow-hidden"
       >
         <div
-          class="bg-exam border border-primary shadow-xl rounded-2xl grid grid-cols-3 gap-2 p-2 shrink-0 text-secondary"
+          class="flex flex-col flex-1 gap-6 overflow-auto h-full md:h-auto max-h-full"
         >
-          <button
-            class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background"
+          <div
+            class="w-full h-full flex flex-col gap-6 px-2 py-6 md:p-12 justify-start md:justify-between"
           >
-            1
-          </button>
-          <button
-            class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background"
-          >
-            1
-          </button>
-          <button
-            class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background"
-          >
-            1
-          </button>
-          <button
-            class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background"
-          >
-            1
-          </button>
-          <button
-            class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background"
-          >
-            1
-          </button>
-          <button
-            class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background"
-          >
-            1
-          </button>
-          <button
-            class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background"
-          >
-            1
-          </button>
-          <button
-            class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background"
-          >
-            1
-          </button>
-          <button
-            class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background"
-          >
-            1
-          </button>
-        </div>
-        <div class="w-full h-full flex flex-col gap-4 p-4 justify-between">
-          <p class="text-xl text-secondary md:text-3xl mb-4">
-            1- My name is _____ and i am 23 years old , how are you ?
-          </p>
-          <div class="flex flex-col gap-4 justify-center">
-            <div class="w-full relative">
-              <input
-                id="male"
-                class="peer hidden"
-                type="radio"
-                name="gender"
-                value="male"
-              /><label
-                for="male"
-                class="flex items-center text-secondary justify-between bg-background border-[rgba(87,143,202,0.422)] gap-3 p-2 w-full rounded border-2 transition duration-300 hover:border-primary text-lg md:text-xl peer-checked:border-primary"
-                ><p class="w-max flex items-center gap-2">
-                  <span
-                    class="w-[22px] h-[22px] bg-[#FFF5E9] flex items-center justify-center"
-                    >A</span
-                  >male
-                </p>
-              </label>
-              <img
-                alt="correct mark"
-                loading="lazy"
-                width="15"
-                height="18"
-                decoding="async"
-                data-nimg="1"
-                class="hidden peer-checked:block absolute right-2 top-1/2 -translate-y-1/2"
-                style="color: transparent"
-                src="/assets/check-solid.svg"
-              />
+            <p class="text-xl text-secondary md:text-3xl mb-4">
+              1- My name is _____ and i am 23 years old , how are you ?
+            </p>
+            <div class="flex flex-col gap-4 justify-center">
+              <div class="w-full relative">
+                <input
+                  id="male"
+                  class="peer hidden"
+                  type="radio"
+                  name="gender"
+                  value="male"
+                /><label
+                  for="male"
+                  class="flex items-center text-secondary justify-between bg-background border-[rgba(87,143,202,0.422)] gap-3 p-2 w-full rounded border-2 transition duration-300 hover:border-primary text-lg md:text-xl peer-checked:border-primary"
+                  ><p class="w-max flex items-center gap-2">
+                    <span
+                      class="w-[22px] h-[22px] bg-[#FFF5E9] flex items-center justify-center"
+                      >A</span
+                    >male
+                  </p>
+                </label>
+                <img
+                  alt="correct mark"
+                  loading="lazy"
+                  width="15"
+                  height="18"
+                  decoding="async"
+                  data-nimg="1"
+                  class="hidden peer-checked:block absolute right-2 top-1/2 -translate-y-1/2"
+                  style="color: transparent"
+                  src="/assets/check-solid.svg"
+                />
+              </div>
+              <div class="w-full relative">
+                <input
+                  id="reham"
+                  class="peer hidden"
+                  type="radio"
+                  name="gender"
+                  value="reham"
+                /><label
+                  for="reham"
+                  class="flex items-center text-secondary justify-between bg-background border-[rgba(87,143,202,0.422)] gap-3 p-2 w-full rounded border-2 transition duration-300 hover:border-primary text-lg md:text-xl peer-checked:border-primary"
+                  ><p class="w-max flex items-center gap-2">
+                    <span
+                      class="w-[22px] h-[22px] bg-[#FFF5E9] flex items-center justify-center"
+                      >A</span
+                    >reham
+                  </p>
+                </label>
+                <img
+                  alt="correct mark"
+                  loading="lazy"
+                  width="15"
+                  height="18"
+                  decoding="async"
+                  data-nimg="1"
+                  class="hidden peer-checked:block absolute right-2 top-1/2 -translate-y-1/2"
+                  style="color: transparent"
+                  src="/assets/check-solid.svg"
+                />
+              </div>
+              <div class="w-full relative">
+                <input
+                  id="abdelhameed"
+                  class="peer hidden"
+                  type="radio"
+                  name="gender"
+                  value="abdelhameed"
+                /><label
+                  for="abdelhameed"
+                  class="flex items-center text-secondary justify-between bg-background border-[rgba(87,143,202,0.422)] gap-3 p-2 w-full rounded border-2 transition duration-300 hover:border-primary text-lg md:text-xl peer-checked:border-primary"
+                  ><p class="w-max flex items-center gap-2">
+                    <span
+                      class="w-[22px] h-[22px] bg-[#FFF5E9] flex items-center justify-center"
+                      >A</span
+                    >abdelhameed
+                  </p>
+                </label>
+                <img
+                  alt="correct mark"
+                  loading="lazy"
+                  width="15"
+                  height="18"
+                  decoding="async"
+                  data-nimg="1"
+                  class="hidden peer-checked:block absolute right-2 top-1/2 -translate-y-1/2"
+                  style="color: transparent"
+                  src="/assets/check-solid.svg"
+                />
+              </div>
+              <div class="w-full relative">
+                <input
+                  id="female"
+                  class="peer hidden"
+                  type="radio"
+                  name="gender"
+                  value="female"
+                /><label
+                  for="female"
+                  class="flex items-center text-secondary justify-between bg-background border-[rgba(87,143,202,0.422)] gap-3 p-2 w-full rounded border-2 transition duration-300 hover:border-primary text-lg md:text-xl peer-checked:border-primary"
+                  ><p class="w-max flex items-center gap-2">
+                    <span
+                      class="w-[22px] h-[22px] bg-[#FFF5E9] flex items-center justify-center"
+                      >A</span
+                    >female
+                  </p>
+                </label>
+                <img
+                  alt="correct mark"
+                  loading="lazy"
+                  width="15"
+                  height="18"
+                  decoding="async"
+                  data-nimg="1"
+                  class="hidden peer-checked:block absolute right-2 top-1/2 -translate-y-1/2"
+                  style="color: transparent"
+                  src="/assets/check-solid.svg"
+                />
+              </div>
             </div>
-            <div class="w-full relative">
-              <input
-                id="reham"
-                class="peer hidden"
-                type="radio"
-                name="gender"
-                value="reham"
-              /><label
-                for="reham"
-                class="flex items-center text-secondary justify-between bg-background border-[rgba(87,143,202,0.422)] gap-3 p-2 w-full rounded border-2 transition duration-300 hover:border-primary text-lg md:text-xl peer-checked:border-primary"
-                ><p class="w-max flex items-center gap-2">
-                  <span
-                    class="w-[22px] h-[22px] bg-[#FFF5E9] flex items-center justify-center"
-                    >A</span
-                  >reham
-                </p>
-              </label>
-              <img
-                alt="correct mark"
-                loading="lazy"
-                width="15"
-                height="18"
-                decoding="async"
-                data-nimg="1"
-                class="hidden peer-checked:block absolute right-2 top-1/2 -translate-y-1/2"
-                style="color: transparent"
-                src="/assets/check-solid.svg"
-              />
+            <div class="w-full flex items-center justify-center gap-2">
+              <button
+                class="flex items-center gap-2 bg-primary px-4 py-2 rounded text-white hover:bg-secondary transition duration-300"
+              >
+                next
+              </button>
+              <button
+                class="flex items-center gap-2 bg-primary px-4 py-2 rounded text-white hover:bg-secondary transition duration-300"
+              >
+                previos
+              </button>
+              <button
+                class="flex items-center gap-2 bg-primary px-4 py-2 rounded text-white hover:bg-secondary transition duration-300"
+              >
+                mark
+              </button>
             </div>
-            <div class="w-full relative">
-              <input
-                id="abdelhameed"
-                class="peer hidden"
-                type="radio"
-                name="gender"
-                value="abdelhameed"
-              /><label
-                for="abdelhameed"
-                class="flex items-center  text-secondary justify-between bg-background border-[rgba(87,143,202,0.422)] gap-3 p-2 w-full rounded border-2 transition duration-300 hover:border-primary text-lg md:text-xl peer-checked:border-primary"
-                ><p class="w-max flex items-center gap-2">
-                  <span
-                    class="w-[22px] h-[22px] bg-[#FFF5E9] flex items-center justify-center"
-                    >A</span
-                  >abdelhameed
-                </p>
-              </label>
-              <img
-                alt="correct mark"
-                loading="lazy"
-                width="15"
-                height="18"
-                decoding="async"
-                data-nimg="1"
-                class="hidden peer-checked:block absolute right-2 top-1/2 -translate-y-1/2"
-                style="color: transparent"
-                src="/assets/check-solid.svg"
-              />
-            </div>
-            <div class="w-full relative">
-              <input
-                id="female"
-                class="peer hidden"
-                type="radio"
-                name="gender"
-                value="female"
-              /><label
-                for="female"
-                class="flex items-center text-secondary justify-between bg-background border-[rgba(87,143,202,0.422)] gap-3 p-2 w-full rounded border-2 transition duration-300 hover:border-primary text-lg md:text-xl peer-checked:border-primary"
-                ><p class="w-max flex items-center gap-2">
-                  <span
-                    class="w-[22px] h-[22px] bg-[#FFF5E9] flex items-center justify-center"
-                    >A</span
-                  >female
-                </p>
-              </label>
-              <img
-                alt="correct mark"
-                loading="lazy"
-                width="15"
-                height="18"
-                decoding="async"
-                data-nimg="1"
-                class="hidden peer-checked:block absolute right-2 top-1/2 -translate-y-1/2"
-                style="color: transparent"
-                src="/assets/check-solid.svg"
-              />
-            </div>
-          </div>
-          <div class="w-full flex items-center justify-center gap-2">
             <button
-              class="flex items-center gap-2 bg-primary px-4 py-2 rounded text-white hover:bg-secondary transition duration-300"
+              class="flex items-center justify-center gap-2 bg-primary px-4 py-2 rounded text-white hover:bg-secondary transition duration-300"
             >
-              next
-            </button>
-            <button
-              class="flex items-center gap-2 bg-primary px-4 py-2 rounded text-white hover:bg-secondary transition duration-300"
-            >
-              previos
-            </button>
-            <button
-              class="flex items-center gap-2 bg-primary px-4 py-2 rounded text-white hover:bg-secondary transition duration-300"
-            >
-              mark
+              submit
             </button>
           </div>
-          <button
-            class="flex items-center justify-center gap-2 bg-primary px-4 py-2 rounded text-white hover:bg-secondary transition duration-300"
+
+          <div
+            class="bg-exam border-t w-full p-2 border-primary shadow-xl flex overflow-x-auto gap-2 text-secondary hideScroll shrink-0"
           >
-            submit
-          </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+            <button
+              class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background"
+            >
+              1
+            </button>
+          </div>
         </div>
 
         <div
-          class="bg-exam border border-primary shadow-xl rounded-2xl h-full flex flex-col gap-4 overflow-auto p-2 shrink-0 hideScroll text-secondary "
+          class="hidden md:block bg-exam border-l border-primary h-full shrink-0 text-secondary relative w-[56px] transition-all duration-200"
         >
           <button
-            class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background shrink-0"
+            id="toggle-mark-section"
+            class="w-[20px] h-[20px] rounded-full border border-primary bg-exam flex items-center justify-center absolute left-0 top-[44px] -translate-x-1/2 z-10 cursor-pointer hover:bg-primary group transition duration-300"
           >
-            Q1
+            <img
+              src="./assets/angle-left-solid.svg"
+              alt="toggle the mark"
+              class="w-[8px] group-hover:invert-100 transition duration-300"
+            />
           </button>
-          <button
-            class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background shrink-0"
+          <div
+            class="flex flex-col gap-4 overflow-auto hideScroll w-full h-full p-2"
           >
-            Q1
-          </button>
-          <button
-            class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background shrink-0"
-          >
-            Q1
-          </button>
-          <button
-            class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background shrink-0"
-          >
-            Q1</button
-          ><button
-            class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background shrink-0"
-          >
-            Q1
-          </button>
-          <button
-            class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background shrink-0"
-          >
-            Q1
-          </button>
-          <button
-            class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background shrink-0"
-          >
-            Q1
-          </button>
-          <button
-            class="w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background shrink-0"
-          >
-            Q9
-          </button>
+            <button
+              class="w-full px-2 py-2 flex items-center justify-between rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background shrink-0"
+            >
+              <p>Q1</p>
+
+              <span class="cursor-pointer hidden">
+                <img src="./assets//trash-solid.svg" alt="" class="w-[10px]" />
+              </span>
+            </button>
+            <button
+              class="w-full px-2 py-2 flex items-center justify-between rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background shrink-0"
+            >
+              <p>Q2</p>
+
+              <span class="cursor-pointer hidden">
+                <img src="./assets//trash-solid.svg" alt="" class="w-[10px]" />
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
-    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/examination.js"></script>
   </body>
 </html>
