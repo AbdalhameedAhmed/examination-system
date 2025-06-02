@@ -1,6 +1,19 @@
 import { jsQuizQuestions } from "./questions.js";
 let isMArkSectionOpened = false;
 let currentQuestion = null;
+let appQuestions = [];
+let markBtn = document.querySelector("#mark");
+let unmarkBtn = document.querySelector("#unmark");
+class Question {
+  constructor(question, options, answer, order) {
+    this.question = question;
+    this.options = options;
+    this.answer = answer;
+    this.order = order;
+    this.userAnswer = undefined;
+    this.isMarked = false;
+  }
+}
 document
   .getElementById("toggle-mark-section")
   .addEventListener("click", function () {
@@ -11,32 +24,25 @@ document
     let questionsParent = markSection.children[1];
     let questions = questionsParent.children;
     markSection.classList.toggle("!w-[160px]");
-    for (let i = 0; i < questions.length; i++) {
+
+    for (const element of questions) {
+      let questionOrder = +element.getAttribute("data-order");
+
       if (isMArkSectionOpened) {
+        element.classList.remove("justify-center");
+        element.classList.add("justify-between");
         setTimeout(() => {
-          questions[i].children[0].innerHTML = `Question ${i + 1}`;
+          element.children[0].innerHTML = `Question ${questionOrder + 1}`;
         }, 150);
       } else {
-        questions[i].children[0].innerHTML = `Q${i + 1}`;
+        element.classList.add("justify-center");
+        element.classList.remove("justify-between");
+        element.children[0].innerHTML = `Q${questionOrder + 1}`;
       }
 
-      questions[i].children[1].classList.toggle("hidden");
+      element.children[1].classList.toggle("hidden");
     }
   });
-
-class Question {
-  constructor(question, options, answer, order) {
-    this.question = question;
-    this.options = options;
-    this.answer = answer;
-    this.order = order;
-    this.userAnswer = undefined;
-  }
-}
-
-console.log(jsQuizQuestions);
-
-let appQuestions = [];
 
 function loadAppQuestion() {
   while (jsQuizQuestions.length) {
@@ -56,12 +62,16 @@ function loadAppQuestion() {
 
 function renderQuestionSection() {
   let buttonClasses =
-    "w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background";
+    "w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 bg-background relative";
   let questionSectionElement = document.querySelector("#questionsSection");
   for (let question of appQuestions) {
     let buttonElement = document.createElement("button");
     buttonElement.className = buttonClasses;
-    buttonElement.innerHTML = question.order + 1;
+    buttonElement.setAttribute("data-questionFlagOrder", question.order);
+    buttonElement.innerHTML = `<span class="z-20 relative">
+    ${question.order + 1}
+    </span><img src="./assets/flag-solid.svg" alt="mark question" class="hidden md:hidden z-10 absolute top-1/2 left-1/2 -translate-1/2 w-5 opacity-30"/>
+    `;
 
     buttonElement.addEventListener("click", () => {
       displayQuestion(question);
@@ -71,10 +81,90 @@ function renderQuestionSection() {
   }
 }
 
+function toggleMarkedSectionVisibility() {
+  let markSection = document.querySelector("#markSection");
+  let markedQuestionsArray = appQuestions.filter(
+    (question) => question.isMarked
+  );
+  if (markedQuestionsArray.length == 0) {
+    markSection.classList.remove("md:block");
+  }
+}
+
+function removeMerkedQuestion(question) {
+  let markedBtn = document.querySelector(`[data-order="${question.order}"]`);
+  markedBtn.remove();
+  question.isMarked = false;
+  toggleMarkedSectionVisibility();
+  if (question == currentQuestion) {
+    markBtn.classList.remove("hidden");
+    unmarkBtn.classList.add("hidden");
+  }
+  let markedQuestionFlag = document.querySelector(
+    `[data-questionFlagOrder="${currentQuestion.order}"] img`
+  );
+  markedQuestionFlag.classList.add("hidden");
+}
+
+function createMarkedQuestionButton(question) {
+  let spanClasses = `cursor-pointer ${isMArkSectionOpened ? "" : "hidden"}`;
+  let spanHtml = `<img src="./assets//trash-solid.svg" alt="" class="w-[10px]" />`;
+  let buttonClasses = `w-full px-2 py-2 flex items-center ${
+    isMArkSectionOpened ? "justify-between" : "justify-center"
+  } rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background shrink-0`;
+  let buttonHtmlContent = `<p>${isMArkSectionOpened ? "Question " : "Q"}${
+    question.order + 1
+  }
+  
+  </p>`;
+
+  let buttonElement = document.createElement("button");
+  let trashSpan = document.createElement("span");
+  trashSpan.innerHTML = spanHtml;
+  trashSpan.className = spanClasses;
+  trashSpan.addEventListener("click", function (event) {
+    event.stopPropagation();
+    removeMerkedQuestion(question);
+  });
+  buttonElement.className = buttonClasses;
+  buttonElement.innerHTML = buttonHtmlContent;
+  buttonElement.appendChild(trashSpan);
+  buttonElement.setAttribute("data-order", question.order);
+  return buttonElement;
+}
+
+function renderMarkedQuestionSection(currentQuestion) {
+  let markedSectionDiv = document.querySelector("#markSection");
+  let markListDiv = document.querySelector("#markList");
+
+  if (!markedSectionDiv.classList.contains("md:block")) {
+    markedSectionDiv.classList.add("md:block");
+  }
+
+  if (!currentQuestion.isMarked) {
+    let buttonElement = createMarkedQuestionButton(currentQuestion);
+    buttonElement.addEventListener("click", (event) => {
+      displayQuestion(currentQuestion);
+    });
+    markListDiv.appendChild(buttonElement);
+    currentQuestion.isMarked = true;
+  }
+}
+
 function displayQuestion(question) {
   currentQuestion = question;
+  disableNextBtn(question.order);
+  disablePrevBtn(question.order);
   let questionHeaderP = document.querySelector("#pageQuestionHeader");
   let questionOptionsDiv = document.querySelector("#pageQuestionOptions");
+
+  if (question.isMarked) {
+    markBtn.classList.add("hidden");
+    unmarkBtn.classList.remove("hidden");
+  } else {
+    markBtn.classList.remove("hidden");
+    unmarkBtn.classList.add("hidden");
+  }
 
   questionHeaderP.innerHTML = `${question.order + 1}-${question.question}`;
   questionOptionsDiv.innerHTML = "";
@@ -113,26 +203,49 @@ function displayQuestion(question) {
   }
 }
 
-function next(event) {
-  let currentQuestionOrder = currentQuestion.order;
-  displayQuestion(appQuestions[currentQuestionOrder + 1]);
-
-  // if (currentQuestionOrder + 1 == appQuestions.length - 1) {
-  //   event.target.disabled = "true";
-  // } else {
-  //   event.target.disabled = null;
-  // }
+function disableNextBtn(questionOrder) {
+  let nextButton = document.querySelector("#next");
+  if (questionOrder == appQuestions.length - 1) {
+    nextButton.disabled = "true";
+  } else {
+    nextButton.disabled = null;
+  }
 }
 
-function prev(event) {
+function disablePrevBtn(questionOrder) {
+  let nextButton = document.querySelector("#prev");
+  if (questionOrder == 0) {
+    nextButton.disabled = "true";
+  } else {
+    nextButton.disabled = null;
+  }
+}
+
+function next() {
+  let currentQuestionOrder = currentQuestion.order;
+  displayQuestion(appQuestions[currentQuestionOrder + 1]);
+}
+
+function prev() {
   let currentQuestionOrder = currentQuestion.order;
   displayQuestion(appQuestions[currentQuestionOrder - 1]);
+}
 
-  // if (currentQuestionOrder - 1 == 0) {
-  //   event.target.disabled = "true";
-  // } else {
-  //   event.target.disabled = null;
-  // }
+function markQuestion() {
+  let markedQuestionFlag = document.querySelector(
+    `[data-questionFlagOrder="${currentQuestion.order}"] img`
+  );
+  markedQuestionFlag.classList.remove("hidden");
+  renderMarkedQuestionSection(currentQuestion);
+
+  markBtn.classList.add("hidden");
+  unmarkBtn.classList.remove("hidden");
+}
+
+function unmarkQuestion() {
+  unmarkBtn.classList.add("hidden");
+  markBtn.classList.remove("hidden");
+  removeMerkedQuestion(currentQuestion);
 }
 
 loadAppQuestion();
@@ -144,5 +257,5 @@ let prevButton = document.querySelector("#prev");
 
 nextButton.addEventListener("click", next);
 prevButton.addEventListener("click", prev);
-
-console.log(appQuestions);
+markBtn.addEventListener("click", markQuestion);
+unmarkBtn.addEventListener("click", unmarkQuestion);
