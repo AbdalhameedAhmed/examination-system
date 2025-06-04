@@ -1,6 +1,10 @@
 import { showError, removeError, togglePassword } from "./utils.js";
 let errors = {};
-
+let users = JSON.parse(localStorage.getItem("users")) || [];
+if (users.length > 0) {
+  window.location.href = "./login.html";
+}
+let popupDiv = document.querySelector("#login-sucess-popup");
 let allToggleButtons = document.querySelectorAll(
   "button[data-type='togglePassword']"
 );
@@ -92,6 +96,19 @@ document.getElementById("registerForm").addEventListener("submit", (e) => {
   let formData = new FormData(e.target);
   let valuesObject = Object.fromEntries(formData.entries());
   if (Object.values(errors).length == 0) {
+    popupDiv.classList.remove("!-right-[1000px]");
     console.log("Submitted", valuesObject);
+    let userObject = {
+      fName: valuesObject.fName,
+      lName: valuesObject.lName,
+      email: valuesObject.email,
+      password: valuesObject.password,
+    };
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    users.push(userObject);
+    localStorage.setItem("users", JSON.stringify(users));
+    setTimeout(() => {
+      window.location.href = "./login.html";
+    }, 800);
   }
 });

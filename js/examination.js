@@ -309,3 +309,7 @@ nextButton.addEventListener("click", next);
 prevButton.addEventListener("click", prev);
 markBtn.addEventListener("click", markQuestion);
 unmarkBtn.addEventListener("click", unmarkQuestion);
+
+// document.querySelector("#popup-submit").addEventListener("click", function () {
+//   window.location.href = "./login.html";
+// });
