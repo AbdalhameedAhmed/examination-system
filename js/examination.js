@@ -121,7 +121,7 @@ function renderQuestionSection() {
     buttonElement.setAttribute("data-questionFlagOrder", question.order);
     buttonElement.innerHTML = `<span class="z-20 relative">
     ${question.order + 1}
-    </span><img src="./assets/flag-solid.svg" alt="mark question" class=" ${
+    </span><img src="assets/flag-solid.svg" alt="mark question" class=" ${
       question.isMarked ? "" : "hidden"
     } md:hidden z-10 absolute top-1/2 left-1/2 -translate-1/2 w-5 opacity-30"/>
     `;
@@ -161,7 +161,7 @@ function removeMerkedQuestion(question) {
 
 function createMarkedQuestionButton(question) {
   let spanClasses = `cursor-pointer ${isMArkSectionOpened ? "" : "hidden"}`;
-  let spanHtml = `<img src="./assets//trash-solid.svg" alt="" class="w-[10px]" />`;
+  let spanHtml = `<img src="assets/trash-solid.svg" alt="" class="w-[10px]" />`;
   let buttonClasses = `w-full px-2 py-2 flex items-center ${
     isMArkSectionOpened ? "justify-between" : "justify-center"
   } rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary bg-background shrink-0`;
