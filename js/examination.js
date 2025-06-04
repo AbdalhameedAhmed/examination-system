@@ -248,7 +248,7 @@ function displayQuestion(question) {
                   data-nimg="1"
                   class="hidden peer-checked:block absolute right-2 top-1/2 -translate-y-1/2"
                   style="color: transparent"
-                  src="/assets/check-solid.svg"
+                  src="assets/check-solid.svg"
                 />
               </div>`;
 
