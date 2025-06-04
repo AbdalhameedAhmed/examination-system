@@ -27,7 +27,7 @@ export const jsQuizQuestions = [
   },
   {
     question: 'What is the output of `console.log(2 + "2")`?',
-    options: ["4", `22`, "NaN", `4`],
+    options: ["4", `22`, "NaN", `44`],
     answer: "22",
   },
   {

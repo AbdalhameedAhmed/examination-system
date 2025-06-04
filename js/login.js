@@ -59,6 +59,7 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
       popupSuccessDiv.classList.add("!scale-x-100");
       setTimeout(() => {
         localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("userObject", JSON.stringify(userObject));
         window.location.href = "./welcome.html";
       }, 800);
     } else {

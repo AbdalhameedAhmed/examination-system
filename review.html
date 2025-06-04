@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exam Review</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <style>
+      /* Optional: Custom scrollbar styling for a cleaner look */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f0f0f0;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1; /* Tailwind gray-300 */
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8; /* Tailwind gray-400 */
+      }
+      @keyframes backgroundPulse {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* Content Fade-in & Slide-up */
+      @keyframes fadeInSlideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Apply the entry animation class */
+      .animate-in {
+        animation: fadeInSlideUp 1.2s ease-out forwards;
+      }
+
+      /* Initial state for JS-triggered animation */
+      .initial-hidden {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      /* Optional: Apply the background animation to the body */
+      body {
+        background: linear-gradient(135deg, #e8f7f3, #578fca, #eef4f2);
+        background-size: 400% 400%; /* Larger background for animation */
+        animation: backgroundPulse 15s ease infinite;
+      }
+    </style>
+  </head>
+  <body
+    class="font-sans bg-gray-50 text-gray-800 min-h-screen flex flex-col items-center py-10 px-4"
+  >
+    <div
+      class="w-full max-w-4xl bg-exam p-8 rounded-lg shadow-lg mb-8 border border-primary"
+    >
+      <h1
+        class="text-4xl md:text-5xl font-extrabold text-primary text-center mb-6"
+      >
+        Exam Review
+      </h1>
+      <p class="text-center text-lg text-gray-600 mb-8">
+        Review your answers below. Correct answers are highlighted in green, and
+        your answers are marked appropriately.
+      </p>
+
+      <div id="questions-container" class="space-y-8"></div>
+
+      <div class="mt-10 text-center">
+        <button
+          id="backToHomeBtn"
+          id="examSubmit"
+          class="flex items-center m-auto justify-center gap-2 bg-primary px-4 py-2 rounded text-white hover:bg-secondary transition duration-300"
+        >
+          Finish Review & Back to Home
+        </button>
+      </div>
+    </div>
+
+    <script src="js/review.js"></script>
+  </body>
+</html>

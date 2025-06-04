@@ -50,6 +50,7 @@ function calculateFinalDegree() {
   }
   localStorage.setItem("finalResult", finalResult);
   localStorage.setItem("totalDegree", totalDegree);
+  localStorage.setItem("examResults", JSON.stringify(userAnswers));
   console.log("final re", finalResult);
 }
 class Question {

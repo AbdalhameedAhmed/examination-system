@@ -1,15 +1,57 @@
 let imageContainer = document.getElementById("image-container");
-
 const userScore = localStorage.getItem("finalResult"); // Example score
 const totalScore = localStorage.getItem("totalDegree"); // Example total score
 const scorePers = (userScore / totalScore) * 100;
 const passingScore = 50; // Example passing threshold
 // --- END IMPORTANT ---
 
+let sheet_url =
+  "https://script.google.com/macros/s/AKfycbwtz0eAU_SM4tXU_exD_w8imWx4fCk-hVpZMRyC6Plo8ft1id4VEgMb4BV0BcPtIlNtvQ/exec&";
+
+let results = localStorage.getItem("examResults"); // No need for || [] if you expect string or null
+let userObject = localStorage.getItem("userObject"); // No need for || ""
+
+if (results && userObject) {
+  results = JSON.parse(results);
+  userObject = JSON.parse(userObject);
+
+  const params = new URLSearchParams({
+    email: userObject.email,
+    total: totalScore, // Ensure totalScore, userScore, scorePers, passingScore are defined
+    result: userScore,
+    state: scorePers >= passingScore ? "Passed" : "Faild",
+  }).toString();
+
+  // Construct the full URL
+  const fullUrl = sheet_url + params;
+
+  console.log("Request URL:", fullUrl); // Log the full URL to see what's being sent
+
+  fetch(fullUrl)
+    .then((response) => {
+      // Always check if the response was successful (HTTP status code 200-299)
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.text(); // Get the response body as text
+    })
+    .then((data) => {
+      console.log("Apps Script Response:", data); // Log the actual response from Apps Script
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+} else {
+  console.log(
+    "LocalStorage items 'examResults' or 'userObject' not found or empty."
+  );
+}
+
 const resultHeading = document.getElementById("result-heading");
 const scoreMessage = document.getElementById("score-message");
 const confettiContainer = document.getElementById("confetti-container");
 const tryAgainButton = document.getElementById("try-again-button");
+const reviewResultsButton = document.getElementById("review-results-button");
 
 // Determine if the user passed
 const passed = scorePers >= passingScore;
@@ -73,3 +115,6 @@ function startConfetti() {
     confettiContainer.appendChild(confetti);
   }
 }
+reviewResultsButton.addEventListener("click", () => {
+  window.location.href = "review.html";
+});
