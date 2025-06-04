@@ -10,7 +10,10 @@
     <div
       class="container flex flex-col justify-start md:justify-center gap-6 w-full max-w-[1200px] h-full m-auto p-4 md:p-6"
     >
-      <div id="timerWrapper" class="h-2 relative bg-primary rounded-xl overflow-hidden">
+      <div
+        id="timerWrapper"
+        class="h-2 relative bg-primary rounded-xl overflow-hidden"
+      >
         <div
           id="timer"
           class="w-full h-2 absolute bg-secondary rounded-xl transform duration-1200"
@@ -98,6 +101,30 @@
             class="flex flex-col gap-4 overflow-auto hideScroll w-full h-full p-2"
           ></div>
         </div>
+      </div>
+    </div>
+
+    <!-- popup -->
+    <div
+      id="popup"
+      class="absolute top-0 left-0 w-screen h-screen flex items-center justify-center bg-[rgba(232,247,243,0.6)] !hidden"
+    >
+      <div
+        class="bg-exam border transform duration-300 scale-0 origin-center border-primary text-secondary rounded-lg shadow-lg p-12 flex flex-col gap-6 w-[600px]"
+      >
+        <img src="./assets/clock-regular.svg" alt="" class="w-[60px] m-auto" />
+        <h1 class="text-center text-4xl font-bold">Time out</h1>
+        <p>
+          The exam time has elapsed. You can no longer answer the questions.
+          Click the button below to see your results.
+        </p>
+
+        <button
+          id="popup-submit"
+          class="flex items-center justify-center gap-2 bg-primary px-4 py-2 rounded text-white hover:bg-secondary transition duration-300"
+        >
+          See your results
+        </button>
       </div>
     </div>
     <script type="module" src="js/examination.js"></script>

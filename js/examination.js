@@ -4,28 +4,37 @@ let currentQuestion = null;
 let appQuestions = [];
 let markBtn = document.querySelector("#mark");
 let unmarkBtn = document.querySelector("#unmark");
-let timerDiv = document.getElementById('timer')
-let timerWrapperDiv = document.getElementById('timerWrapper')
-let intervalCode = setInterval(timerHandler,1000 );
-let totalTime = 10 ;
+let timerDiv = document.getElementById("timer");
+let timerWrapperDiv = document.getElementById("timerWrapper");
+let popupDiv = document.getElementById("popup");
+let intervalCode = setInterval(timerHandler, 1000);
+let totalTime = 10;
 let currrentTime = 0;
-let timeStepPerc = (1/totalTime)*100;
+let timeStepPerc = (1 / totalTime) * 100;
 let totalDegree = jsQuizQuestions.length;
-let finalResult = 0 ;
-function timerHandler (){
-  currrentTime += 1
-  timerDiv.style.transform = `translateX(${-100 + (timeStepPerc * currrentTime) }%)`
-  if (timeStepPerc * currrentTime >= 75 ){
-    timerDiv.classList.add('!bg-red-500','animate-pulse');
-    timerWrapperDiv.classList.add('!bg-red-950');
+let finalResult = 0;
+function timerHandler() {
+  currrentTime += 1;
+  timerDiv.style.transform = `translateX(${
+    -100 + timeStepPerc * currrentTime
+  }%)`;
+  if (timeStepPerc * currrentTime >= 75) {
+    timerDiv.classList.add("!bg-red-500", "animate-pulse");
+    timerWrapperDiv.classList.add("!bg-red-950");
   }
-  if(currrentTime == totalTime ){
+  if (currrentTime == totalTime) {
     clearInterval(intervalCode);
-    for (let question of appQuestions){
-      if (question.answer == question.userAnswer ){
-        finalResult +=1 ;
+    setTimeout(() => {
+      popupDiv.classList.remove("!hidden");
+      setTimeout(() => {
+        popupDiv.children[0].classList.remove("scale-0");
+      });
+      for (let question of appQuestions) {
+        if (question.answer == question.userAnswer) {
+          finalResult += 1;
+        }
       }
-    }
+    }, 1000);
   }
 }
 class Question {
@@ -85,18 +94,20 @@ function loadAppQuestion() {
 }
 
 function renderQuestionSection() {
-  
   let questionSectionElement = document.querySelector("#questionsSection");
-  questionSectionElement.innerHTML=""
+  questionSectionElement.innerHTML = "";
   for (let question of appQuestions) {
-      let buttonClasses =
-    `w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 ${question.userAnswer ? "bg-green-300":"bg-background"}  relative`;
+    let buttonClasses = `w-10 h-10 rounded-2xl border border-primary focus:inset-shadow-xs inset-shadow-primary shrink-0 ${
+      question.userAnswer ? "bg-green-300" : "bg-background"
+    }  relative`;
     let buttonElement = document.createElement("button");
     buttonElement.className = buttonClasses;
     buttonElement.setAttribute("data-questionFlagOrder", question.order);
     buttonElement.innerHTML = `<span class="z-20 relative">
     ${question.order + 1}
-    </span><img src="./assets/flag-solid.svg" alt="mark question" class=" ${question.isMarked ? "" : "hidden"} md:hidden z-10 absolute top-1/2 left-1/2 -translate-1/2 w-5 opacity-30"/>
+    </span><img src="./assets/flag-solid.svg" alt="mark question" class=" ${
+      question.isMarked ? "" : "hidden"
+    } md:hidden z-10 absolute top-1/2 left-1/2 -translate-1/2 w-5 opacity-30"/>
     `;
 
     buttonElement.addEventListener("click", () => {
@@ -228,16 +239,16 @@ function displayQuestion(question) {
     questionOptionsDiv.innerHTML += optionDiv;
   }
 
-  for (let optionIndex in question.options){
-    let input = document.getElementById(`option-${optionIndex}`)
-    input.addEventListener("change",(e)=>{
-    console.log(e)
-    question.userAnswer= e.target.value;
-    console.log(question);
-    renderQuestionSection()
-    })
-    if (question.options[optionIndex] == question.userAnswer){
-      input.checked=true;
+  for (let optionIndex in question.options) {
+    let input = document.getElementById(`option-${optionIndex}`);
+    input.addEventListener("change", (e) => {
+      console.log(e);
+      question.userAnswer = e.target.value;
+      console.log(question);
+      renderQuestionSection();
+    });
+    if (question.options[optionIndex] == question.userAnswer) {
+      input.checked = true;
     }
   }
 }
