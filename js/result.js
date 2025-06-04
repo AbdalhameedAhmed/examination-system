@@ -6,7 +6,7 @@ const passingScore = 50; // Example passing threshold
 // --- END IMPORTANT ---
 
 let sheet_url =
-  "https://script.google.com/macros/s/AKfycbwtz0eAU_SM4tXU_exD_w8imWx4fCk-hVpZMRyC6Plo8ft1id4VEgMb4BV0BcPtIlNtvQ/exec&";
+  "https://script.google.com/macros/s/AKfycbzqAmob1j_w8mED7EbJxh29-LqAK9vPDQqQgnNHgBEvEdIO63UX3Wv13YrxkErN7YtbBg/exec?path=Sheet1&action=write&";
 
 let results = localStorage.getItem("examResults"); // No need for || [] if you expect string or null
 let userObject = localStorage.getItem("userObject"); // No need for || ""
@@ -14,20 +14,22 @@ let userObject = localStorage.getItem("userObject"); // No need for || ""
 if (results && userObject) {
   results = JSON.parse(results);
   userObject = JSON.parse(userObject);
+  console.log("content");
 
   const params = new URLSearchParams({
     email: userObject.email,
     total: totalScore, // Ensure totalScore, userScore, scorePers, passingScore are defined
-    result: userScore,
+    mark: userScore,
     state: scorePers >= passingScore ? "Passed" : "Faild",
   }).toString();
+  console.log(",y params is", params);
 
   // Construct the full URL
-  const fullUrl = sheet_url + params;
+  const fullUrl = sheet_url;
 
   console.log("Request URL:", fullUrl); // Log the full URL to see what's being sent
 
-  fetch(fullUrl)
+  fetch(fullUrl + params)
     .then((response) => {
       // Always check if the response was successful (HTTP status code 200-299)
       if (!response.ok) {
