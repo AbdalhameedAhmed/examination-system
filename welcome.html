@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to the Exam!</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+      /* Custom Keyframes for awesome animations */
+
+      /* Background Pulse (optional, but adds a subtle glow) */
+      @keyframes backgroundPulse {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* Content Fade-in & Slide-up */
+      @keyframes fadeInSlideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Apply the entry animation class */
+      .animate-in {
+        animation: fadeInSlideUp 1.2s ease-out forwards;
+      }
+
+      /* Initial state for JS-triggered animation */
+      .initial-hidden {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      /* Optional: Apply the background animation to the body */
+      body {
+        background: linear-gradient(135deg, #e8f7f3, #578fca, #eef4f2);
+        background-size: 400% 400%; /* Larger background for animation */
+        animation: backgroundPulse 15s ease infinite;
+      }
+    </style>
+  </head>
+  <body
+    class="font-sans text-gray-900 min-h-screen flex justify-center items-center p-4"
+  >
+    <div
+      id="welcome-card"
+      class="initial-hidden bg-exam p-8 md:p-12 rounded-lg shadow-lg text-center max-w-2xl w-full border !border-primary relative overflow-hidden transform transition-all duration-500 ease-out"
+    >
+      <div
+        class="absolute top-0 left-0 w-24 h-24 bg-blue-100 rounded-full opacity-30 -translate-x-12 -translate-y-12"
+      ></div>
+      <div
+        class="absolute bottom-0 right-0 w-32 h-32 bg-purple-100 rounded-full opacity-30 translate-x-16 translate-y-16"
+      ></div>
+
+      <h1
+        class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 relative z-10"
+      >
+        <span class="block text-blue-600 mb-2">Welcome to the</span>
+        <span class="block">Knowledge Challenge!</span>
+      </h1>
+
+      <p
+        class="text-lg md:text-xl text-gray-700 leading-relaxed mb-8 relative z-10"
+      >
+        Get ready to test your understanding. This exam consists of
+        <span class="font-bold text-blue-700 text-2xl"
+          ><span id="questionCount">10</span> questions</span
+        >
+        and you'll have
+        <span class="font-bold text-green-600 text-2xl"
+          ><span id="time"></span> minutes</span
+        >
+        to complete it.
+      </p>
+
+      <p class="text-md text-gray-600 mb-10 italic relative z-10">
+        "The journey of a thousand miles begins with a single step."
+      </p>
+
+      <button
+        id="startExamButton"
+        class="px-10 py-5 bg-green-500 text-white text-xl font-bold rounded-full shadow-lg hover:bg-green-600 transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-opacity-75 relative z-10 cursor-pointer group overflow-hidden"
+      >
+        <span class="relative z-10">Start Your Exam!</span>
+        <span
+          class="absolute inset-0 bg-white opacity-20 transform scale-0 group-hover:scale-100 transition-transform duration-300 ease-out rounded-full"
+        ></span>
+      </button>
+    </div>
+
+    <script src="js/welcome.js" type="module"></script>
+  </body>
+</html>

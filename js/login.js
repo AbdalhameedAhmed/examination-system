@@ -2,6 +2,9 @@ import { togglePassword, showError, removeError } from "./utils.js";
 
 let errors = {};
 
+let popupErrorDiv = document.querySelector("#login-error-popup");
+let popupSuccessDiv = document.querySelector("#login-sucess-popup");
+
 let allToggleButtons = document.querySelectorAll(
   "button[data-type='togglePassword']"
 );
@@ -45,6 +48,25 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
   let formData = new FormData(e.target);
   let valuesObject = Object.fromEntries(formData.entries());
   if (Object.values(errors).length == 0) {
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    let userObject = users.find(
+      (user) =>
+        user.email == valuesObject.email &&
+        user.password == valuesObject.password
+    );
+
+    if (userObject) {
+      popupSuccessDiv.classList.add("!scale-x-100");
+      setTimeout(() => {
+        localStorage.setItem("isLoggedIn", "true");
+        window.location.href = "./welcome.html";
+      }, 800);
+    } else {
+      popupErrorDiv.classList.add("!scale-x-100");
+      setTimeout(() => {
+        popupErrorDiv.classList.remove("!scale-x-100");
+      }, 3000);
+    }
     console.log("Submitted", valuesObject);
   }
 });

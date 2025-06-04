@@ -4,7 +4,7 @@ let users = JSON.parse(localStorage.getItem("users")) || [];
 if (users.length > 0) {
   window.location.href = "./login.html";
 }
-let popupDiv = document.querySelector("#login-sucess-popup");
+let popupDiv = document.querySelector("#register-sucess-popup");
 let allToggleButtons = document.querySelectorAll(
   "button[data-type='togglePassword']"
 );
@@ -96,7 +96,7 @@ document.getElementById("registerForm").addEventListener("submit", (e) => {
   let formData = new FormData(e.target);
   let valuesObject = Object.fromEntries(formData.entries());
   if (Object.values(errors).length == 0) {
-    popupDiv.classList.remove("!-right-[1000px]");
+    popupDiv.classList.add("!scale-x-100");
     console.log("Submitted", valuesObject);
     let userObject = {
       fName: valuesObject.fName,

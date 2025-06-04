@@ -1,4 +1,9 @@
 import { jsQuizQuestions } from "./questions.js";
+import { totalTime } from "./utils.js";
+if (localStorage.getItem("isLoggedIn") != "true") {
+  window.location.href = "./login.html";
+}
+
 let isMArkSectionOpened = false;
 let currentQuestion = null;
 let appQuestions = [];
@@ -6,13 +11,14 @@ let markBtn = document.querySelector("#mark");
 let unmarkBtn = document.querySelector("#unmark");
 let timerDiv = document.getElementById("timer");
 let timerWrapperDiv = document.getElementById("timerWrapper");
+let examSubmitBtn = document.getElementById("examSubmit");
 let popupDiv = document.getElementById("popup");
 let intervalCode = setInterval(timerHandler, 1000);
-let totalTime = 10;
 let currrentTime = 0;
 let timeStepPerc = (1 / totalTime) * 100;
 let totalDegree = jsQuizQuestions.length;
 let finalResult = 0;
+let userAnswers = null;
 function timerHandler() {
   currrentTime += 1;
   timerDiv.style.transform = `translateX(${
@@ -23,19 +29,28 @@ function timerHandler() {
     timerWrapperDiv.classList.add("!bg-red-950");
   }
   if (currrentTime == totalTime) {
+    calculateFinalDegree();
     clearInterval(intervalCode);
     setTimeout(() => {
       popupDiv.classList.remove("!hidden");
       setTimeout(() => {
         popupDiv.children[0].classList.remove("scale-0");
       });
-      for (let question of appQuestions) {
-        if (question.answer == question.userAnswer) {
-          finalResult += 1;
-        }
-      }
     }, 1000);
   }
+}
+
+function calculateFinalDegree() {
+  if (!userAnswers) userAnswers = [...appQuestions];
+  finalResult = 0;
+  for (let question of userAnswers) {
+    if (question.answer == question.userAnswer) {
+      finalResult += 1;
+    }
+  }
+  localStorage.setItem("finalResult", finalResult);
+  localStorage.setItem("totalDegree", totalDegree);
+  console.log("final re", finalResult);
 }
 class Question {
   constructor(question, options, answer, order) {
@@ -243,8 +258,8 @@ function displayQuestion(question) {
     let input = document.getElementById(`option-${optionIndex}`);
     input.addEventListener("change", (e) => {
       console.log(e);
-      question.userAnswer = e.target.value;
-      console.log(question);
+      question.userAnswer = `${e.target.value}`;
+      console.log(e.target.value);
       renderQuestionSection();
     });
     if (question.options[optionIndex] == question.userAnswer) {
@@ -310,6 +325,10 @@ prevButton.addEventListener("click", prev);
 markBtn.addEventListener("click", markQuestion);
 unmarkBtn.addEventListener("click", unmarkQuestion);
 
-// document.querySelector("#popup-submit").addEventListener("click", function () {
-//   window.location.href = "./login.html";
-// });
+examSubmitBtn.addEventListener("click", () => {
+  calculateFinalDegree();
+  window.location.href = "./result.html";
+});
+document.querySelector("#popup-submit").addEventListener("click", function () {
+  window.location.href = "./result.html";
+});

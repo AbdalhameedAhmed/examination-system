@@ -34,3 +34,5 @@ export function removeError(ele, errors) {
   ele.classList.remove("!border-red-500");
   delete errors[ele.name];
 }
+
+export const totalTime = 300;
